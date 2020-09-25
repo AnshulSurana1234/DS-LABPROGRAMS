@@ -1,1 +1,44 @@
 
+include <stdio.h>
+struct student
+{
+    int id , age,marks;
+};
+void verify(student s[15],int m)
+{
+    for(int n=0;n<m;n++)
+    {
+        if(s[n].age>20)
+        {
+            if(s[n].marks>=0&&s[n].marks<=100&&s[n]marks>64)
+            {
+                printf("ID:%d\n AGE:%d\n MARKS %d\n,s[n]id,s[n]age,s[n]marks);
+                else
+                {
+                    printf("\n Marks are not required");
+                    
+                }
+                else
+                {
+                    printf("Age is below 20");
+                }
+            }
+        }
+    }
+}
+{
+    int n;
+    student s[15];
+    printf("Enter no.of students:\n");
+    scanf("%d",&n);
+    printf("Enter students detail:\n");
+    scanf("%d",&n);
+    printf("Enter student details\n:ID,\n:AGE\n:MARKS");
+    for(int m=0;m<n;m++)
+    {
+        scanf("%d%d%d",&s[n]ID&s[n]AGe,s[n]MARKS)
+        printf("\n");
+    }
+    verify(s);
+    return 0;
+}
