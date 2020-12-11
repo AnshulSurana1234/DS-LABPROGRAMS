@@ -1,0 +1,189 @@
+#include <stdio.h>
+#include <stdlib.h>
+void sort();
+void create();
+void reverse();
+void create_second();
+void concatenate();
+void display();
+struct node
+{
+  int data;
+  struct node *next;  
+};
+struct node *head=NULL;
+struct node *head2= NULL;
+int c;
+
+int main()
+{
+	int choice;
+    do
+    {
+    printf("\n1. Create\n2. Sort\n3. Reverse\n4. Enter second list\n5. Concatenate\n6. Display\n7. Exit");
+    printf("\nEnter your choice : ");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1: create();
+                break;
+        case 2: sort();
+                break;
+        case 3: reverse();
+                break;
+        case 4: create_second();
+                break;
+        case 5: concatenate();
+                break;
+        case 6: display();
+                break;
+        case 7: exit(0);
+    }
+    }while(choice != 7);
+    return 0;
+}
+
+void create()
+{
+    struct node *newnode;
+    struct node *temp;
+    int s;
+    printf("Enter integer  : ");
+    scanf("%d",&s);
+    newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data =s;
+    if (head==NULL)
+    { 
+      newnode->next=NULL;
+      head=newnode; 
+      printf("First node created\n");
+      c++;
+    }
+     else 
+     {
+        temp=head;
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+        }
+    temp->next=newnode;
+    newnode->next=NULL;
+    c++;
+    printf("Node created\n");
+   }  
+}
+
+void reverse()
+{
+    struct node *prev=NULL,*current=head, *next=NULL;
+    while(current!=NULL)
+    {
+        next=current->next;
+        current->next=prev;
+        prev=current;
+        current=next;
+    }
+    head=prev;
+    printf("The list is reversed\n");
+}
+
+void display()
+{
+    struct node *ptr=NULL;
+    ptr=head;
+     
+    if(ptr==NULL)
+    {
+        printf("List is empty\n");
+    }
+    else
+    {
+        printf("\nContents of the Linked List: ");
+        while(ptr!=NULL)
+       {          
+          printf("\t%d",ptr->data);
+          ptr=ptr->next;
+       }
+    }
+    printf("\n");
+}
+void create_second()
+{
+  struct node *newnode;
+  struct node *temp;
+    int s,y;
+
+    printf("Enter integer: ");
+    scanf("%d",&s);
+    newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data =s;
+    if (head2==NULL)
+    { 
+      newnode->next=NULL;
+      head2=newnode; 
+      printf("First node created\n");
+      c++;
+    }
+     else 
+     {
+    temp=head2;
+        while(temp->next!=NULL)
+        {
+      temp=temp->next;
+        }
+    temp->next=newnode;
+    newnode->next=NULL;
+    c++;
+    printf("Node created\n");
+   } 
+}
+
+
+void concatenate()
+{
+    struct node *ptr;
+        if(head==NULL)
+        {
+                head=head2;
+        }
+        if(head2==NULL)
+        {
+            head2=head;
+        }
+        ptr=head;
+        while(ptr->next!=NULL)
+            ptr=ptr->next;
+        ptr->next=head2;
+        printf("The list is concatenated\n");
+}
+
+void sort()
+{
+    int swap, i; 
+    struct node *ptr1; 
+    struct node *lptr = NULL; 
+  
+    if (head == NULL) 
+        return; 
+  
+    do
+    { 
+        swap = 0; 
+        ptr1 = head; 
+  
+        while (ptr1->next != lptr) 
+        { 
+            if (ptr1->data > ptr1->next->data) 
+            {  
+                int temp = ptr1->data; 
+                ptr1->data = ptr1->next->data; 
+                ptr1->next->data = temp; 
+                swap = 1; 
+            } 
+            ptr1 = ptr1->next; 
+        } 
+        lptr = ptr1; 
+    } 
+    while(swap); 
+    printf("The list is sorted\n");
+}
