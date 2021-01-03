@@ -106,3 +106,4 @@ void display()
     for(i=top;i!=NULL;i=i->next)
         printf("\t%d ",i->data);
 
+}
